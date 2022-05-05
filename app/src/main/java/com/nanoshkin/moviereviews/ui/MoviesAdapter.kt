@@ -11,12 +11,16 @@ import coil.load
 import com.nanoshkin.moviereviews.data.model.Movie
 import com.nanoshkin.moviereviews.databinding.ItemMovieBinding
 
-class MoviesAdapter :
+interface OnItemClickListener {
+    fun clickOnCard(url: String)
+}
+
+class MoviesAdapter(private val onItemClickListener: OnItemClickListener) :
     PagingDataAdapter<Movie, MoviesAdapter.MoviesViewHolder>(MovieDiffItemCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MoviesViewHolder {
         val binding = ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return MoviesViewHolder(binding)
+        return MoviesViewHolder(binding, onItemClickListener)
     }
 
     override fun onBindViewHolder(holder: MoviesViewHolder, position: Int) {
@@ -26,7 +30,8 @@ class MoviesAdapter :
     }
 
     class MoviesViewHolder(
-        private val binding: ItemMovieBinding
+        private val binding: ItemMovieBinding,
+        private val onItemClickListener: OnItemClickListener
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(movie: Movie) {
@@ -36,6 +41,10 @@ class MoviesAdapter :
                 }
                 titleTextView.text = movie.title
                 summeryShortTextView.text = movie.summeryShort
+
+                itemMovieCardView.setOnClickListener {
+                    onItemClickListener.clickOnCard(movie.webPageUrl)
+                }
             }
         }
     }

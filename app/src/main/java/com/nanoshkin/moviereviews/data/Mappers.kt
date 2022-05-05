@@ -7,6 +7,7 @@ fun Result.toMovie(): Movie {
     return Movie(
         title = display_title,
         image = multimedia.src,
-        summeryShort = summary_short
+        summeryShort = summary_short,
+        webPageUrl = link.url
     )
 }
