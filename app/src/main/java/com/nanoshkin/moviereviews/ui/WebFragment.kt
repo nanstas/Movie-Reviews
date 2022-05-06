@@ -11,12 +11,13 @@ import android.webkit.WebViewClient
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import by.kirich1409.viewbindingdelegate.viewBinding
 import com.nanoshkin.moviereviews.R
 import com.nanoshkin.moviereviews.databinding.FragmentWebBinding
 
 class WebFragment : Fragment(R.layout.fragment_web) {
 
-    private lateinit var binding: FragmentWebBinding
+    private val binding by viewBinding(FragmentWebBinding::bind)
 
     private val webUrl: String by lazy {
         val args by navArgs<WebFragmentArgs>()
@@ -29,8 +30,6 @@ class WebFragment : Fragment(R.layout.fragment_web) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        binding = FragmentWebBinding.bind(view)
 
         initWebView()
         setWebClient()
@@ -78,7 +77,6 @@ class WebFragment : Fragment(R.layout.fragment_web) {
                 }
             }
         }
-
     }
 
     private fun loadUrl(pageUrl: String) {
