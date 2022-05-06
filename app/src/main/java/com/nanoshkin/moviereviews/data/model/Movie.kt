@@ -4,5 +4,6 @@ data class Movie(
     val title: String,
     val image: String,
     val summeryShort: String,
-    val webPageUrl: String
+    val webPageUrl: String,
+    val criticsPick: Boolean
 )

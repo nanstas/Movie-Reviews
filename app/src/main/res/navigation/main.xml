@@ -9,7 +9,7 @@
         android:id="@+id/mainFragment"
         android:name="com.nanoshkin.moviereviews.ui.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_webFragment"
             app:destination="@id/webFragment" />
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/webFragment"
         android:name="com.nanoshkin.moviereviews.ui.WebFragment"
-        android:label="WebFragment" >
+        android:label="WebFragment">
         <argument
             android:name="webUrlArg"
             app:argType="string" />

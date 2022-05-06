@@ -3,6 +3,7 @@ package com.nanoshkin.moviereviews.ui
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
@@ -36,11 +37,17 @@ class MoviesAdapter(private val onItemClickListener: OnItemClickListener) :
 
         fun bind(movie: Movie) {
             with(binding) {
-                imageImageView.load(movie.image) {
+                moviesScreenImageView.load(movie.image) {
                     placeholder(ColorDrawable(Color.TRANSPARENT))
                 }
                 titleTextView.text = movie.title
                 summeryShortTextView.text = movie.summeryShort
+
+                if (movie.criticsPick) {
+                    icCriticsPickImageView.visibility = View.VISIBLE
+                } else {
+                    icCriticsPickImageView.visibility = View.GONE
+                }
 
                 itemMovieCardView.setOnClickListener {
                     onItemClickListener.clickOnCard(movie.webPageUrl)

@@ -8,6 +8,7 @@ fun Result.toMovie(): Movie {
         title = display_title,
         image = multimedia.src,
         summeryShort = summary_short,
-        webPageUrl = link.url
+        webPageUrl = link.url,
+        criticsPick = critics_pick == 1
     )
 }
