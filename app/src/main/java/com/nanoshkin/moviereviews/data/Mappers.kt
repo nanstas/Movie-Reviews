@@ -5,10 +5,10 @@ import com.nanoshkin.moviereviews.data.network.dto.Result
 
 fun Result.toMovie(): Movie {
     return Movie(
-        title = display_title,
+        title = displayTitle,
         image = multimedia.src,
-        summeryShort = summary_short,
+        summeryShort = summaryShort,
         webPageUrl = link.url,
-        criticsPick = critics_pick == 1
+        criticsPick = criticsPick == 1
     )
 }
